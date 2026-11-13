@@ -11,12 +11,7 @@ import { getEnv } from './config/env';
 import { errorMiddleware } from './middleware/error.middleware';
 import { rateLimitMiddleware } from './middleware/rateLimit.middleware';
 
-// Importar rutas (se agregarán conforme se implementen)
-// import { authRoutes } from './routes/auth.routes';
-// import { canchaRoutes } from './routes/cancha.routes';
-// import { reservaRoutes } from './routes/reserva.routes';
-// import { listaEsperaRoutes } from './routes/listaEspera.routes';
-// import { adminRoutes } from './routes/admin.routes';
+import { authRoutes } from './routes/auth.routes';
 
 export function createApp(): Application {
   const env = getEnv();
@@ -94,18 +89,20 @@ export function createApp(): Application {
   // app.use('/api/listas-espera', listaEsperaRoutes);
   // app.use('/api/admin', adminRoutes);
 
-  // Placeholder temporal mientras se implementan rutas
+  // Rutas de la API
+  app.use('/api/auth', authRoutes);
+
+  // Placeholder para rutas futuras
   app.use('/api', (_req: Request, res: Response) => {
     res.json({
       message: 'Reserva Club API',
       version: '0.0.1',
-      docs: 'https://github.com/tu-usuario/reserva-club/docs/spec.md',
       endpoints: {
-        auth: '/api/auth (register, login, refresh, logout, me)',
-        canchas: '/api/canchas (list, detail, disponibilidad)',
-        reservas: '/api/reservas (crear, listar, cancelar, checkin)',
-        listasEspera: '/api/listas-espera (unirse, confirmar, listar)',
-        admin: '/api/admin (canchas, usuarios, feriados, pico, bloqueos, auditoria, reportes)',
+        auth: '/api/auth (register, login, refresh, logout, me) ✅ IMPLEMENTADO',
+        canchas: '/api/canchas (pendiente)',
+        reservas: '/api/reservas (pendiente)',
+        listasEspera: '/api/listas-espera (pendiente)',
+        admin: '/api/admin (pendiente)',
       },
     });
   });
