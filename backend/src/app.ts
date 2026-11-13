@@ -12,6 +12,7 @@ import { errorMiddleware } from './middleware/error.middleware';
 import { rateLimitMiddleware } from './middleware/rateLimit.middleware';
 
 import { authRoutes } from './routes/auth.routes';
+import { canchaRoutes } from './routes/cancha.routes';
 
 export function createApp(): Application {
   const env = getEnv();
